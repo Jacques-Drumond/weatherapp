@@ -10,9 +10,10 @@ def index(request):
         try:
             city_res = urllib.request.urlopen(f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid=dd7754a6860e94c1b2e91ebf32b894cf').read()
         except:
-            return render(request, 'index.html')
+            return render(request, 'index.html', {'city': city})
         json_data = json.loads(city_res)
         city_data = {
+            "name": str(city).capitalize(),
             "country_code": str(json_data['sys']['country']),
             "coordinates": str(json_data['coord']['lon']) + ' ' + str(json_data['coord']['lat']),
             "temperature": str(json_data['main']['temp']) + 'k',

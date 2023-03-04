@@ -36,12 +36,15 @@
   <div class="row">
     {% if city.country_code %}
     <div class="col-md-6 col-md-offset-3">
+      <h1 style="color: green">{{city.name}}</h1>
       <h3>country code : {{city.country_code}}</h1>
         <h5>coordinate : {{city.coordinates}}</h5>
         <h5>temp : {{city.temperature}}</h5>
         <h5>pressure : {{city.pressure}} </h5>
         <h5>humidity : {{city.humidity}}</h5>
     </div>
+    {% else %}
+    <h1 style="color: red">City named {{city}} not found</h1>
     {% endif %}
   </div>
 </body>
